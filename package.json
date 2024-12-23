@@ -14,7 +14,6 @@
     "schema": "backend/prisma/schema.prisma"
   },
   "scripts": {
-    "start": "webpack --openssl-legacy-provider",
-    "build": "webpack --openssl-legacy-provider"
+    "build": "webpack"
   }
 }
