@@ -1,0 +1,18 @@
+{
+    "builds": [
+      {
+        "src": "backend/scripts/index.ts",
+        "use": "@vercel/node",
+        "config": {
+          "includeFiles": ["backend/prisma/schema.prisma"]
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "build/bundle.js"
+      }
+    ]
+  }
+  
