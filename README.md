@@ -54,3 +54,9 @@ cd frontend
 npm start
 # or
 yarn start
+
+Contributing
+Feel free to contribute to this project by opening issues or submitting pull requests.
+
+License
+This project is licensed under the MIT License.
