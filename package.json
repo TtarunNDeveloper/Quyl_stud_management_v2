@@ -1,38 +1,19 @@
 {
-  "name": "quyl-stud-manag",
-  "version": "1.0.0",
-  "description": "Quyl Student Management System Overview: Quyl Student Management System is a web application designed to manage students' information, including their enrollment details, course information, and login statuses. This application leverages a modern tech stack, including React for the frontend, Express.jsfor the backend, and Prisma for the database ORM.",
-  "homepage": "https://github.com/TtarunNDeveloper/Quyl_stud_management#readme",
-  "bugs": {
-    "url": "https://github.com/TtarunNDeveloper/Quyl_stud_management/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TtarunNDeveloper/Quyl_stud_management.git"
-  },
-  "license": "ISC",
-  "author": "Tarun",
-  "type": "commonjs",
-  "main": "backend/index.js",
-  "scripts": {
-    "start": "node backend/index.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",
-    "@reduxjs/toolkit": "^2.5.0",
-    "axios": "^0.21.1",
-    "cors": "^2.8.5",
-    "date-fns": "^2.30.0",
-    "express": "^4.17.1",
-    "prisma": "^2.21.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^8.0.5",
-    "react-scripts": "4.0.3",
-    "redux": "^4.2.1",
-    "redux-devtools-extension": "^2.13.9"
-  }
+    "date-fns": "^4.1.0"
+  },
+  "prisma": {
+    "schema": "backend/prisma/schema.prisma"
+  },
+  
+    "scripts": {
+      "start": "webpack --openssl-legacy-provider",
+      "build": "webpack --openssl-legacy-provider"
+    }
 }
+

@@ -8,18 +8,18 @@ generator client {
 }
 
 model Student {
-  id         Int       @id @default(autoincrement())
-  name       String
-  cohort     String
-  dateJoined DateTime
-  lastLogin  DateTime
-  status     Boolean
-  courses    Course[]
+  id          Int      @id @default(autoincrement())
+  name        String
+  cohort      String
+  dateJoined  DateTime
+  lastLogin   DateTime
+  status      Boolean
+  courses     Course[]
 }
 
 model Course {
-  id     Int      @id @default(autoincrement())
-  name   String   @unique
-  image  String
-  Student Student[]
+  id          Int      @id @default(autoincrement())
+  image       String
+  name        String
+  students    Student[]
 }
