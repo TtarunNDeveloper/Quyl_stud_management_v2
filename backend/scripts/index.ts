@@ -66,10 +66,20 @@ async function main() {
     },
   });
 
-  students.forEach(student => {
+  students.forEach((student: { 
+    name: string; 
+    cohort: string; 
+    dateJoined: Date; 
+    lastLogin: Date; 
+    status: boolean; 
+    courses: { image: string; name: string }[] 
+  }) => {
     console.log(`Student: ${student.name}`);
     console.log(`Cohort: ${student.cohort}`);
-    console.log(`Courses: ${student.courses.map(course => `${course.image} ${course.name}`).join(', ')}`);
+    console.log(`Courses: ${student.courses.map((course: { 
+      image: string; 
+      name: string 
+    }) => `${course.image} ${course.name}`).join(', ')}`);
     console.log(`Date Joined: ${format(new Date(student.dateJoined), 'dd.MMM.yyyy')}`);
     console.log(`Last Login: ${format(new Date(student.lastLogin), 'dd.MMM.yyyy hh:mm a')}`);
     const statusIcon = student.status ? `✅` : `❌`;
