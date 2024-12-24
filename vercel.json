@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "src/index.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "public/*",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "src/index.js" }
+    ],
+    "env": {
+      "DATABASE_URL": "postgresql://prisma_user:prisma2312@localhost:5432/quyl_student_management"
+    }
+  }
+  
