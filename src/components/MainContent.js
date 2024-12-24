@@ -1,21 +1,7 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-// src/components/MainContent.js
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchStudentsThunk } from '../store/studentSlice';
-import { createStudent, deleteStudents, updateStudent } from '../apiService';
-=======
->>>>>>> new-branch
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchStudentsThunk } from '../store/studentSlice';
 import { createStudent, deleteStudents, updateStudent, fetchCourses } from '../apiServices';
-<<<<<<< HEAD
-=======
->>>>>>> 33e68cd (commit at 1.27 pm)
->>>>>>> new-branch
 
 function MainContent() {
   const dispatch = useDispatch();
@@ -36,34 +22,23 @@ function MainContent() {
   const [isRemoving, setIsRemoving] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     dispatch(fetchStudentsThunk({ year: selectedYear, course: selectedCourse }));
   }, [selectedYear, selectedCourse, dispatch]);
-=======
->>>>>>> new-branch
-  const [courses, setCourses] = useState([]);
-  useEffect(() => {
-    dispatch(fetchStudentsThunk({ year: selectedYear, course: selectedCourse }));
-  }, [selectedYear, selectedCourse, dispatch]);
+
   useEffect(() => {
     const getCourses = async () => {
       try {
         const response = await fetchCourses();
         setCourses(response);
-      }catch(error){
-        console.error("Error fetching courses: ",error);
+      } catch (error) {
+        console.error("Error fetching courses: ", error);
       }
     };
     getCourses();
-  },[]);
-<<<<<<< HEAD
-=======
->>>>>>> 33e68cd (commit at 1.27 pm)
->>>>>>> new-branch
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -76,15 +51,7 @@ function MainContent() {
   const handleCourseChange = (e) => {
     setFormData({
       ...formData,
-<<<<<<< HEAD
       courses: Array.from(e.target.selectedOptions, option => Number(option.value)),
-=======
-<<<<<<< HEAD
-      courses: Array.from(e.target.selectedOptions, option => option.value),
-=======
-      courses: Array.from(e.target.selectedOptions, option => Number(option.value)),
->>>>>>> 33e68cd (commit at 1.27 pm)
->>>>>>> new-branch
     });
   };
 
@@ -108,15 +75,7 @@ function MainContent() {
     if (selectedRows.includes(id)) {
       setSelectedRows(selectedRows.filter(rowId => rowId !== id));
     } else {
-<<<<<<< HEAD
-      setSelectedRows([...selectedRows, id]); 
-=======
-<<<<<<< HEAD
-      setSelectedRows([id]); // Only allow one row to be selected for updating
-=======
-      setSelectedRows([...selectedRows, id]); 
->>>>>>> 33e68cd (commit at 1.27 pm)
->>>>>>> new-branch
+      setSelectedRows([...selectedRows, id]);
     }
   };
 
@@ -256,25 +215,10 @@ function MainContent() {
               multiple
               required
             >
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-              <option value="CBSE 9-Science">CBSE 9-Science</option>
-              <option value="CBSE 9-Math">CBSE 9-Math</option>
-              <option value="CBSE 10-Science">CBSE 10-Science</option>
-              <option value="CBSE 10-Math">CBSE 10-Math</option>
+              {courses.map(course => (
+                <option key={course.id} value={course.id}>{course.name}</option>
+              ))}
             </select>
-=======
->>>>>>> new-branch
-            {courses.map(course => (
-            <option key={course.id} value={course.id}>{course.name}</option>
-            ))}
-            </select>
-
-<<<<<<< HEAD
-=======
->>>>>>> 33e68cd (commit at 1.27 pm)
->>>>>>> new-branch
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="dateJoined">
@@ -309,164 +253,157 @@ function MainContent() {
               type="submit" 
               className="bg-blue-500 text-white p-2 rounded"
             >
-              Submit
+                            Submit
             </button>
           </div>
         </form>
       )}
       {isRemoving && (
-  <div className="flex justify-between mt-4">
-    <button 
-      className="bg-red-500 text-white p-2 rounded" 
-      onClick={handleDelete}
-    >
-      Delete Selected
-    </button>
-    <button 
-      className="bg-gray-500 text-white p-2 rounded" 
-      onClick={() => {
-        setIsRemoving(false);
-        setSelectedRows([]);
-      }}
-    >
-      Cancel
-    </button>
-  </div>
-)}
-{isUpdating && (
-  <div className="flex justify-between mt-4">
-    <button 
-      className="bg-green-500 text-white p-2 rounded" 
-      onClick={handleUpdate}
-    >
-      Save Changes
-    </button>
-    <button 
-      className="bg-gray-500 text-white p-2 rounded" 
-      onClick={() => {
-        setIsUpdating(false);
-        setSelectedRows([]);
-      }}
-    >
-      Cancel
-    </button>
-  </div>
-)}
-<table className="w-full text-black">
-  <thead>
-    <tr className="shadow-md">
-      {(isRemoving || isUpdating) && <th className="p-2 text-left">Select</th>}
-      <th className="p-2 text-left">Student Name</th>
-      <th className="p-2 text-left">Cohort</th>
-      <th className="p-2 text-left">Courses</th>
-      <th className="p-2 text-left">Date Joined</th>
-      <th className="p-2 text-left">Last Login</th>
-      <th className="p-2 text-left">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    {students.map(student => (
-      <tr 
-        className={`shadow-md ${isUpdating && !selectedRows.includes(student.id) ? 'opacity-50' : ''}`} 
-        key={student.id}
-      >
-        {(isRemoving || isUpdating) && (
-          <td className="p-2">
-            <input
-              type="checkbox"
-              checked={selectedRows.includes(student.id)}
-              onChange={() => handleRowSelect(student.id)}
-            />
-          </td>
-        )}
-        <td className="p-2">
-          {isUpdating && selectedRows.includes(student.id) ? (
-            <input 
-              type="text" 
-              name="name" 
-              value={formData.name} 
-              onChange={handleInputChange} 
-              className="bg-white border border-gray-300 rounded p-2 w-full"
-            />
-          ) : (
-            student.name
-          )}
-        </td>
-        <td className="p-2">
-          {isUpdating && selectedRows.includes(student.id) ? (
-            <select 
-              name="cohort" 
-              value={formData.cohort} 
-              onChange={handleInputChange} 
-              className="bg-white border border-gray-300 rounded p-2 w-full"
+        <div className="flex justify-between mt-4">
+          <button 
+            className="bg-red-500 text-white p-2 rounded" 
+            onClick={handleDelete}
+          >
+            Delete Selected
+          </button>
+          <button 
+            className="bg-gray-500 text-white p-2 rounded" 
+            onClick={() => {
+              setIsRemoving(false);
+              setSelectedRows([]);
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      )}
+      {isUpdating && (
+        <div className="flex justify-between mt-4">
+          <button 
+            className="bg-green-500 text-white p-2 rounded" 
+            onClick={handleUpdate}
+          >
+            Save Changes
+          </button>
+          <button 
+            className="bg-gray-500 text-white p-2 rounded" 
+            onClick={() => {
+              setIsUpdating(false);
+              setSelectedRows([]);
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      )}
+      <table className="w-full text-black">
+        <thead>
+          <tr className="shadow-md">
+            {(isRemoving || isUpdating) && <th className="p-2 text-left">Select</th>}
+            <th className="p-2 text-left">Student Name</th>
+            <th className="p-2 text-left">Cohort</th>
+            <th className="p-2 text-left">Courses</th>
+            <th className="p-2 text-left">Date Joined</th>
+            <th className="p-2 text-left">Last Login</th>
+            <th className="p-2 text-left">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map(student => (
+            <tr 
+              className={`shadow-md ${isUpdating && !selectedRows.includes(student.id) ? 'opacity-50' : ''}`} 
+              key={student.id}
             >
-              <option value="AY 2023-24">AY 2023-24</option>
-              <option value="AY 2024-25">AY 2024-25</option>
-            </select>
-          ) : (
-            student.cohort
-          )}
-        </td>
-        <td className="p-2">
-          {isUpdating && selectedRows.includes(student.id) ? (
-            <select 
-              name="courses" 
-              value={formData.courses} 
-              onChange={handleCourseChange} 
-              className="bg-white border border-gray-300 rounded p-2 w-full"
-              multiple
-            >
-              <option value="CBSE 9-Science">CBSE 9-Science</option>
-              <option value="CBSE 9-Math">CBSE 9-Math</option>
-              <option value="CBSE 10-Science">CBSE 10-Science</option>
-              <option value="CBSE 10-Math">CBSE 10-Math</option>
-            </select>
-          ) : (
-            student.courses.map(course => `${course.name} ${course.image}`).join(', ')
-          )}
-        </td>
-        <td className="p-2">
-          {isUpdating && selectedRows.includes(student.id) ? (
-            <input 
-              type="date" 
-              name="dateJoined" 
-              value={formData.dateJoined} 
-              onChange={handleInputChange} 
-              className="bg-white border border-gray-300 rounded p-2 w-full"
-            />
-          ) : (
-            new Date(student.dateJoined).toLocaleDateString()
-          )}
-        </td>
-        <td className="p-2">
-          {isUpdating && selectedRows.includes(student.id) ? (
-            <input 
-              type="datetime-local" 
-              name="lastLogin" 
-              value={formData.lastLogin} 
-              onChange={handleInputChange} 
-              className="bg-white border border-gray-300 rounded p-2 w-full"
-            />
-          ) : (
-            new Date(student.lastLogin).toLocaleString()
-          )}
-        </td>
-        <td className="p-2">
-          <span className={`inline-block h-2 w-2 ${student.status ? 'bg-green-500' : 'bg-red-500'} rounded-full`}></span>
-        </td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-</div>
+              {(isRemoving || isUpdating) && (
+                <td className="p-2">
+                  <input
+                    type="checkbox"
+                    checked={selectedRows.includes(student.id)}
+                    onChange={() => handleRowSelect(student.id)}
+                  />
+                </td>
+              )}
+              <td className="p-2">
+                {isUpdating && selectedRows.includes(student.id) ? (
+                  <input 
+                    type="text" 
+                    name="name" 
+                    value={formData.name} 
+                    onChange={handleInputChange} 
+                    className="bg-white border border-gray-300 rounded p-2 w-full"
+                  />
+                ) : (
+                  student.name
+                )}
+              </td>
+              <td className="p-2">
+                {isUpdating && selectedRows.includes(student.id) ? (
+                  <select 
+                    name="cohort" 
+                    value={formData.cohort} 
+                    onChange={handleInputChange} 
+                    className="bg-white border border-gray-300 rounded p-2 w-full"
+                  >
+                    <option value="AY 2023-24">AY 2023-24</option>
+                    <option value="AY 2024-25">AY 2024-25</option>
+                  </select>
+                ) : (
+                  student.cohort
+                )}
+              </td>
+              <td className="p-2">
+                {isUpdating && selectedRows.includes(student.id) ? (
+                  <select 
+                    name="courses" 
+                    value={formData.courses} 
+                    onChange={handleCourseChange} 
+                    className="bg-white border border-gray-300 rounded p-2 w-full"
+                    multiple
+                  >
+                    <option value="CBSE 9-Science">CBSE 9-Science</option>
+                    <option value="CBSE 9-Math">CBSE 9-Math</option>
+                    <option value="CBSE 10-Science">CBSE 10-Science</option>
+                    <option value="CBSE 10-Math">CBSE 10-Math</option>
+                  </select>
+                ) : (
+                  student.courses.map(course => `${course.name} ${course.image}`).join(', ')
+                )}
+              </td>
+              <td className="p-2">
+                {isUpdating && selectedRows.includes(student.id) ? (
+                  <input 
+                    type="date" 
+                    name="dateJoined" 
+                    value={formData.dateJoined} 
+                    onChange={handleInputChange} 
+                    className="bg-white border border-gray-300 rounded p-2 w-full"
+                  />
+                ) : (
+                  new Date(student.dateJoined).toLocaleDateString()
+                )}
+              </td>
+              <td className="p-2">
+                {isUpdating && selectedRows.includes(student.id) ? (
+                  <input 
+                    type="datetime-local" 
+                    name="lastLogin" 
+                    value={formData.lastLogin} 
+                    onChange={handleInputChange} 
+                    className="bg-white border border-gray-300 rounded p-2 w-full"
+                  />
+                ) : (
+                  new Date(student.lastLogin).toLocaleString()
+                )}
+              </td>
+              <td className="p-2">
+                <span className={`inline-block h-2 w-2 ${student.status ? 'bg-green-500' : 'bg-red-500'} rounded-full`}></span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
-<<<<<<< HEAD
+
 export default MainContent;
-=======
-<<<<<<< HEAD
-export default MainContent;
-=======
-export default MainContent;
->>>>>>> 33e68cd (commit at 1.27 pm)
->>>>>>> new-branch

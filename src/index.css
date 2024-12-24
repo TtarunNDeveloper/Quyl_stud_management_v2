@@ -3,15 +3,9 @@
 @tailwind utilities;
 
 body {
-<<<<<<< HEAD
   background-color: black;
-=======
-<<<<<<< HEAD
   background-color: #F5F5F5;
-=======
   background-color: black;
->>>>>>> 33e68cd (commit at 1.27 pm)
->>>>>>> new-branch
   color: white;
   font-family: 'Arial, sans-serif';
 }
