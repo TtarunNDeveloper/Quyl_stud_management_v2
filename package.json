@@ -46,6 +46,11 @@
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1"
   },
+  "resolutions": {
+    "redux": "^4.0.0",
+    "react-redux": "^8.0.0",
+    "@reduxjs/toolkit": "^1.8.0"
+  },
   "prisma": {
     "schema": "backend/prisma/schema.prisma"
   },
