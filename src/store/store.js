@@ -7,4 +7,12 @@ const store = configureStore({
   },
 });
 
+<<<<<<< HEAD
 export default store;
+=======
+<<<<<<< HEAD
+export default store;
+=======
+export default store;
+>>>>>>> 33e68cd (commit at 1.27 pm)
+>>>>>>> new-branch

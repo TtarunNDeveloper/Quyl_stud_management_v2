@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "version": 2,
     "builds": [
       {
@@ -16,5 +17,22 @@
     "env": {
       "DATABASE_URL": "postgresql://prisma_user:prisma2312@localhost:5432/quyl_student_management"
     }
+=======
+    "builds": [
+      {
+        "src": "backend/scripts/index.ts",
+        "use": "@vercel/node",
+        "config": {
+          "includeFiles": ["backend/prisma/schema.prisma"]
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "build/bundle.js"
+      }
+    ]
+>>>>>>> new-branch
   }
   

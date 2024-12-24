@@ -1,5 +1,16 @@
+<<<<<<< HEAD
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchStudents } from '../apiServices';
+=======
+<<<<<<< HEAD
+// src/store/studentSlice.js
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchStudents } from '../apiService';
+=======
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchStudents } from '../apiServices';
+>>>>>>> 33e68cd (commit at 1.27 pm)
+>>>>>>> new-branch
 
 export const fetchStudentsThunk = createAsyncThunk('students/fetchStudents', async ({ year, course }) => {
   const response = await fetchStudents(year, course);
@@ -30,4 +41,12 @@ const studentSlice = createSlice({
   },
 });
 
+<<<<<<< HEAD
 export default studentSlice.reducer;
+=======
+<<<<<<< HEAD
+export default studentSlice.reducer;
+=======
+export default studentSlice.reducer;
+>>>>>>> 33e68cd (commit at 1.27 pm)
+>>>>>>> new-branch

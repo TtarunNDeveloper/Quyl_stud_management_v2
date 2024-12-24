@@ -37,7 +37,14 @@ app.get('/students', async (req, res) => {
         courses: true,
       },
     });
+<<<<<<< HEAD
     console.log("Fetched Students with Courses: ", students);
+=======
+<<<<<<< HEAD
+=======
+    console.log("Fetched Students with Courses: ", students);
+>>>>>>> 33e68cd (commit at 1.27 pm)
+>>>>>>> new-branch
     res.json(students);
   } catch (error) {
     res.status(500).send(error.message);
@@ -48,9 +55,18 @@ app.post('/students', async (req, res) => {
   const { name, cohort, dateJoined, lastLogin, courses } = req.body;
   console.log("Request Body:", req.body);
   try {
+<<<<<<< HEAD
     const parsedCourses = courses.map((courseId) => ({ id: parseInt(courseId) })).filter(course => !isNaN(course.id));
     console.log("Parsed Courses:", parsedCourses);
 
+=======
+<<<<<<< HEAD
+=======
+    const parsedCourses = courses.map((courseId) => ({ id: parseInt(courseId) })).filter(course => !isNaN(course.id));
+    console.log("Parsed Courses:", parsedCourses);
+
+>>>>>>> 33e68cd (commit at 1.27 pm)
+>>>>>>> new-branch
     const newStudent = await prisma.student.create({
       data: {
         name,
@@ -59,7 +75,15 @@ app.post('/students', async (req, res) => {
         lastLogin: new Date(lastLogin),
         status: true,
         courses: {
+<<<<<<< HEAD
           connect: parsedCourses,
+=======
+<<<<<<< HEAD
+          connect: courses.map((courseId) => ({ id: parseInt(courseId) })),
+=======
+          connect: parsedCourses,
+>>>>>>> 33e68cd (commit at 1.27 pm)
+>>>>>>> new-branch
         },
       },
     });
@@ -86,6 +110,11 @@ app.delete('/students', async (req, res) => {
     res.status(500).send(error.message);
   }
 });
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> new-branch
 app.get('/courses', async (req, res) => {
   try {
     const courses = await prisma.course.findMany();
@@ -94,15 +123,28 @@ app.get('/courses', async (req, res) => {
     res.status(500).send(error.message);
   }
 });
+<<<<<<< HEAD
+=======
+>>>>>>> 33e68cd (commit at 1.27 pm)
+>>>>>>> new-branch
 
 app.put('/students/:id', async (req, res) => {
   const { id } = req.params;
   const { name, cohort, dateJoined, lastLogin, courses } = req.body;
   console.log("Request Body:", req.body);
   try {
+<<<<<<< HEAD
     const parsedCourses = courses.map((courseId) => ({ id: parseInt(courseId) })).filter(course => !isNaN(course.id));
     console.log("Parsed Courses:", parsedCourses);
 
+=======
+<<<<<<< HEAD
+=======
+    const parsedCourses = courses.map((courseId) => ({ id: parseInt(courseId) })).filter(course => !isNaN(course.id));
+    console.log("Parsed Courses:", parsedCourses);
+
+>>>>>>> 33e68cd (commit at 1.27 pm)
+>>>>>>> new-branch
     const updatedStudent = await prisma.student.update({
       where: { id: parseInt(id) },
       data: {
@@ -112,7 +154,15 @@ app.put('/students/:id', async (req, res) => {
         lastLogin: new Date(lastLogin),
         status: true,
         courses: {
+<<<<<<< HEAD
           connect: parsedCourses,
+=======
+<<<<<<< HEAD
+          connect: courses.map((courseId) => ({ id: parseInt(courseId) })).filter(course => !isNaN(course.id)),
+=======
+          connect: parsedCourses,
+>>>>>>> 33e68cd (commit at 1.27 pm)
+>>>>>>> new-branch
         },
       },
     });
@@ -121,9 +171,19 @@ app.put('/students/:id', async (req, res) => {
     console.error("Error updating student:", error);
     res.status(500).send(error.message);
   }
+<<<<<<< HEAD
 }
   
 );
+=======
+<<<<<<< HEAD
+});
+=======
+}
+  
+);
+>>>>>>> 33e68cd (commit at 1.27 pm)
+>>>>>>> new-branch
 
 async function startServer() {
   try {

@@ -1,4 +1,27 @@
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  "devDependencies": {
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^22.10.2",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.7.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "dotenv": "16.4.7"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.1.0",
+    "date-fns": "^4.1.0"
+  },
+  "prisma": {
+    "schema": "backend/prisma/schema.prisma"
+  },
+  "scripts": {
+    "build": "webpack"
+=======
+>>>>>>> new-branch
   "name": "quyl-stud-manag",
   "version": "0.1.0",
   "private": true,

@@ -1,4 +1,14 @@
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  "devDependencies": {
+    "prisma": "^6.1.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.1.0"
+=======
+>>>>>>> new-branch
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
@@ -13,5 +23,9 @@
   "dependencies": {
     "@types/node": "^22.10.2",
     "typescript": "^5.7.2"
+<<<<<<< HEAD
+=======
+>>>>>>> 33e68cd (commit at 1.27 pm)
+>>>>>>> new-branch
   }
 }

@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+// src/index.js
+=======
+>>>>>>> 33e68cd (commit at 1.27 pm)
+>>>>>>> new-branch
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
