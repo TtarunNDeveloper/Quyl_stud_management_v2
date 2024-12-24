@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // src/components/Header.js
+=======
+>>>>>>> 33e68cd (commit at 1.27 pm)
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faBell, faEnvelope, faCog } from '@fortawesome/free-solid-svg-icons'; 
@@ -34,4 +37,8 @@ function Header() {
   );
 }
 
+<<<<<<< HEAD
 export default Header;
+=======
+export default Header;
+>>>>>>> 33e68cd (commit at 1.27 pm)

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // src/components/NavBar.js
+=======
+>>>>>>> 33e68cd (commit at 1.27 pm)
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faBook, faBookOpen, faQuestion, faChartPie, faCog } from '@fortawesome/free-solid-svg-icons'; // Added faBookOpen for Chapter
@@ -40,4 +43,8 @@ function NavBar() {
   );
 }
 
+<<<<<<< HEAD
 export default NavBar;
+=======
+export default NavBar;
+>>>>>>> 33e68cd (commit at 1.27 pm)

@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 // src/components/MainContent.js
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchStudentsThunk } from '../store/studentSlice';
 import { createStudent, deleteStudents, updateStudent } from '../apiService';
+=======
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchStudentsThunk } from '../store/studentSlice';
+import { createStudent, deleteStudents, updateStudent, fetchCourses } from '../apiServices';
+>>>>>>> 33e68cd (commit at 1.27 pm)
 
 function MainContent() {
   const dispatch = useDispatch();
@@ -23,10 +30,28 @@ function MainContent() {
   const [isRemoving, setIsRemoving] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
+<<<<<<< HEAD
 
   useEffect(() => {
     dispatch(fetchStudentsThunk({ year: selectedYear, course: selectedCourse }));
   }, [selectedYear, selectedCourse, dispatch]);
+=======
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    dispatch(fetchStudentsThunk({ year: selectedYear, course: selectedCourse }));
+  }, [selectedYear, selectedCourse, dispatch]);
+  useEffect(() => {
+    const getCourses = async () => {
+      try {
+        const response = await fetchCourses();
+        setCourses(response);
+      }catch(error){
+        console.error("Error fetching courses: ",error);
+      }
+    };
+    getCourses();
+  },[]);
+>>>>>>> 33e68cd (commit at 1.27 pm)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +64,11 @@ function MainContent() {
   const handleCourseChange = (e) => {
     setFormData({
       ...formData,
+<<<<<<< HEAD
       courses: Array.from(e.target.selectedOptions, option => option.value),
+=======
+      courses: Array.from(e.target.selectedOptions, option => Number(option.value)),
+>>>>>>> 33e68cd (commit at 1.27 pm)
     });
   };
 
@@ -63,7 +92,11 @@ function MainContent() {
     if (selectedRows.includes(id)) {
       setSelectedRows(selectedRows.filter(rowId => rowId !== id));
     } else {
+<<<<<<< HEAD
       setSelectedRows([id]); // Only allow one row to be selected for updating
+=======
+      setSelectedRows([...selectedRows, id]); 
+>>>>>>> 33e68cd (commit at 1.27 pm)
     }
   };
 
@@ -203,11 +236,19 @@ function MainContent() {
               multiple
               required
             >
+<<<<<<< HEAD
               <option value="CBSE 9-Science">CBSE 9-Science</option>
               <option value="CBSE 9-Math">CBSE 9-Math</option>
               <option value="CBSE 10-Science">CBSE 10-Science</option>
               <option value="CBSE 10-Math">CBSE 10-Math</option>
             </select>
+=======
+            {courses.map(course => (
+            <option key={course.id} value={course.id}>{course.name}</option>
+            ))}
+            </select>
+
+>>>>>>> 33e68cd (commit at 1.27 pm)
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="dateJoined">
@@ -394,4 +435,8 @@ function MainContent() {
 </div>
   );
 }
+<<<<<<< HEAD
 export default MainContent;
+=======
+export default MainContent;
+>>>>>>> 33e68cd (commit at 1.27 pm)

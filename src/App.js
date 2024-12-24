@@ -20,4 +20,8 @@ function App() {
   );
 }
 
+<<<<<<< HEAD
 export default App;
+=======
+export default App;
+>>>>>>> 33e68cd (commit at 1.27 pm)
