@@ -1,38 +1,19 @@
 {
-<<<<<<< HEAD
     "version": 2,
     "builds": [
       {
-        "src": "src/index.js",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "public/*",
-        "use": "@vercel/static"
-      }
-    ],
-    "routes": [
-      { "src": "/(.*)", "dest": "src/index.js" }
-    ],
-    "env": {
-      "DATABASE_URL": "postgresql://prisma_user:prisma2312@localhost:5432/quyl_student_management"
-    }
-=======
-    "builds": [
-      {
-        "src": "backend/scripts/index.ts",
-        "use": "@vercel/node",
+        "src": "package.json",
+        "use": "@vercel/static-build",
         "config": {
-          "includeFiles": ["backend/prisma/schema.prisma"]
+          "distDir": "build"
         }
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "build/bundle.js"
+        "dest": "/index.html"
       }
     ]
->>>>>>> new-branch
   }
   
